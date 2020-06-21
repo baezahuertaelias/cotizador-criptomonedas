@@ -23,7 +23,7 @@ const Select = styled.select`
 `;
 
 
-const useMoneda = (label, stateInicial, opciones) => {
+const useCriptomoneda = (label, stateInicial, opciones) => {
     /* Aca se ponen las funciones */
 
     /* Lo que esta en array es lo que retorna la funcion de useState */
@@ -31,7 +31,7 @@ const useMoneda = (label, stateInicial, opciones) => {
     const [state, actualizarState] = useState(stateInicial); //La variable se pone en caso que el usuario quiera agregarle un state a la moneda inicial
 
     /* Lo que esta dentro es la parte grafica */
-    const SelectMoneda = () => (
+    const SelectCripto = () => (
         <Fragment>
             <Label>{label}</Label>
             <Select
@@ -40,8 +40,8 @@ const useMoneda = (label, stateInicial, opciones) => {
             >
                 <option value="">- Seleccione -</option>
 
-                {opciones.map(opcion => (
-                    <option key={opcion.codigo} value={opcion.codigo}>{opcion.nombre}</option>
+                { opciones.map(opcion => (
+                    <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.Name}>{opcion.CoinInfo.FullName}</option>
                 ))}
 
             </Select>
@@ -50,8 +50,8 @@ const useMoneda = (label, stateInicial, opciones) => {
     );
 
     /* Retornar state, interfaz y func que modifica el state */
-    return [state, SelectMoneda, actualizarState];
+    return [state, SelectCripto, actualizarState];
 }
 
-export default useMoneda;
+export default useCriptomoneda;
 
